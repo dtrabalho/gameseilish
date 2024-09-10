@@ -101,8 +101,8 @@
 
     <!-- Botões para iniciar os quizzes -->
     <div id="quiz-buttons" class="hidden">
-        <button onclick="startQuiz('quiz1')">Iniciar Quiz 1</button>
-        <button onclick="startQuiz('quiz2')">Iniciar Quiz 2</button>
+        <button onclick="startQuiz('quiz1')">Quiz Albuns</button>
+        <button onclick="startQuiz('quiz2')">Quiz Shows</button>
     </div>
 
     <!-- Quizzes -->
