@@ -1,131 +1,146 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Games Eilish</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom, #123C73, #0E3D59, #060A0D);
-            color: #f5f5f5;
-            min-height: 100vh; /* Garantir que o gradiente cubra a altura total da página */
-        }
-        h1 {
-            text-align: center;
-            color: #BF0413; /* Cor vermelha para o título */
-            margin-top: 20px;
-            margin-bottom: 20px;
-            font-size: 2.5em;
-            font-weight: bold;
-        }
-        #name-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-        #playerName {
-            padding: 10px;
-            border: 2px solid #0E3D59;
-            border-radius: 5px;
-            font-size: 1em;
-            width: 80%;
-            max-width: 300px;
-            margin-right: 10px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        #playerName:focus {
-            border-color: #BF0413;
-        }
-        button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            color: #fff;
-            background-color: #BF0413; /* Cor vermelha para o botão */
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        button:hover {
-            background-color: #A00C11; /* Cor vermelha mais escura ao passar o mouse */
-            transform: scale(1.05);
-        }
-        button:active {
-            transform: scale(1);
-        }
-        .hidden {
-            display: none;
-        }
-        .quiz {
-            display: none;
-        }
-        .quiz.active {
-            display: block;
-        }
-        #quiz-buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-        #quiz-buttons button {
-            margin: 5px;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 5px;
-            background-color: #0E3D59;
-            color: #fff;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        #quiz-buttons button:hover {
-            background-color: #0B2740; /* Cor de botão mais escura ao passar o mouse */
-            transform: scale(1.05);
-        }
-        #quiz-buttons button:active {
-            transform: scale(1);
-        }
-    </style>
-</head>
-<body>
-    <!-- Título da página -->
-    <h1>Games Eilish</h1>
+let scores = {
+    quiz1: 0,
+    quiz2: 0
+};
 
-    <!-- Container para inserir o nome do jogador -->
-    <div id="name-container">
-        <input type="text" id="playerName" placeholder="Digite seu nome" />
-        <button onclick="setPlayerName()">Confirmar</button>
-    </div>
+let currentQuestionIndex = {
+    quiz1: 0,
+    quiz2: 0
+};
 
-    <!-- Botões para iniciar os quizzes -->
-    <div id="quiz-buttons" class="hidden">
-        <button onclick="startQuiz('quiz1')">Quiz Albuns</button>
-        <button onclick="startQuiz('quiz2')">Quiz Shows</button>
-    </div>
+let playerName = "";
 
-    <!-- Quizzes -->
-    <div id="quiz1" class="quiz">
-        <div id="quiz1-questions"></div>
-        <div id="quiz1-end" class="hidden">
-            <h3>Fim do Quiz 1</h3>
-            <p>Você acertou <span id="finalScore1">0</span> perguntas.</p>
-            <div id="ranking1" class="hidden"></div>
-        </div>
-        <p id="score1">Pontuação: 0</p>
-    </div>
+// Perguntas dos quizzes
+const quizzes = {
+    quiz1: [
+        { question: "Qual é o primeiro álbum de Billie Eilish?", answers: ["When We All Fall Asleep, Where Do We Go?", "Happier Than Ever", "Don't Smile at Me"], correct: 0 },
+        { question: "Em que ano o álbum 'Happier Than Ever' foi lançado?", answers: ["2021", "2019", "2020"], correct: 0 },
+        { question: "Qual faixa abre o álbum 'When We All Fall Asleep, Where Do We Go?'", answers: ["Bad Guy", "You Should See Me in a Crown", "!!!!!!!"], correct: 2 },
+        { question: "Qual é a última faixa de 'Happier Than Ever'?", answers: ["Happier Than Ever", "Male Fantasy", "Billie Bossa Nova"], correct: 1 },
+        // Adicione mais perguntas conforme necessário até 10
+    ],
+    quiz2: [
+        { question: "Em qual festival Billie Eilish se apresentou em 2022?", answers: ["Coachella", "Lollapalooza", "Glastonbury"], correct: 0 },
+        { question: "Em que cidade Billie Eilish fez seu primeiro show no Brasil?", answers: ["São Paulo", "Rio de Janeiro", "Curitiba"], correct: 0 },
+        { question: "Qual foi o primeiro grande festival americano que ela participou?", answers: ["Coachella", "Lollapalooza", "SXSW"], correct: 2 },
+        { question: "Em que ano foi a turnê 'When We All Fall Asleep World Tour'?", answers: ["2019", "2020", "2018"], correct: 0 },
+        // Adicione mais perguntas conforme necessário até 10
+    ]
+};
 
-    <div id="quiz2" class="quiz">
-        <div id="quiz2-questions"></div>
-        <div id="quiz2-end" class="hidden">
-            <h3>Fim do Quiz 2</h3>
-            <p>Você acertou <span id="finalScore2">0</span> perguntas.</p>
-            <div id="ranking2" class="hidden"></div>
-        </div>
-        <p id="score2">Pontuação: 0</p>
-    </div>
+// Função para definir o nome do jogador
+function setPlayerName() {
+    playerName = document.getElementById("playerName").value;
+    if (playerName) {
+        document.getElementById("name-container").classList.add("hidden");
+        document.getElementById("quiz-buttons").classList.remove("hidden");
+    } else {
+        alert("Por favor, insira seu nome.");
+    }
+}
 
-    <script src="scripts.js"></script>
-</body>
-</html>
+// Função para iniciar o quiz
+function startQuiz(quizId) {
+    scores[quizId] = 0;
+    currentQuestionIndex[quizId] = 0;
+
+    // Esconde todos os quizzes
+    var quizzesDiv = document.querySelectorAll('.quiz');
+    quizzesDiv.forEach(quiz => {
+        quiz.classList.remove('active');
+        // Verifica se os elementos existem antes de tentar modificar
+        let scoreElement = quiz.querySelector(`#score${quizId.slice(-1)}`);
+        if (scoreElement) scoreElement.textContent = 'Pontuação: 0';
+
+        let endElement = quiz.querySelector(`#quiz${quizId.slice(-1)}-end`);
+        if (endElement) endElement.classList.add('hidden');
+
+        let rankingElement = quiz.querySelector(`#ranking${quizId.slice(-1)}`);
+        if (rankingElement) rankingElement.classList.add('hidden');
+
+        let questionsElement = quiz.querySelector('.questions');
+        if (questionsElement) questionsElement.innerHTML = ''; // Limpa perguntas
+    });
+
+    // Mostra o quiz selecionado
+    var selectedQuiz = document.getElementById(quizId);
+    if (selectedQuiz) {
+        selectedQuiz.classList.add('active');
+        loadQuestion(quizId);  // Carrega a primeira pergunta
+    } else {
+        console.error(`Quiz ${quizId} não encontrado.`);
+    }
+}
+
+// Função para carregar as perguntas
+function loadQuestion(quizId) {
+    const quizElement = document.getElementById(`${quizId}-questions`);
+    const questionIndex = currentQuestionIndex[quizId];
+    const quizData = quizzes[quizId];
+
+    if (quizElement && questionIndex < quizData.length) {
+        const currentQuestion = quizData[questionIndex];
+        quizElement.innerHTML = `
+            <p>${currentQuestion.question}</p>
+            <button onclick="checkAnswer('${quizId}', 0)"> ${currentQuestion.answers[0]} </button>
+            <button onclick="checkAnswer('${quizId}', 1)"> ${currentQuestion.answers[1]} </button>
+            <button onclick="checkAnswer('${quizId}', 2)"> ${currentQuestion.answers[2]} </button>
+        `;
+    } else if (quizElement) {
+        quizElement.innerHTML = '';
+        const endElement = document.getElementById(`quiz${quizId.slice(-1)}-end`);
+        if (endElement) endElement.classList.remove('hidden');
+
+        const finalScoreElement = document.getElementById(`finalScore${quizId.slice(-1)}`);
+        if (finalScoreElement) finalScoreElement.textContent = scores[quizId];
+
+        updateRanking(quizId);
+    } else {
+        console.error(`Elemento ${quizId}-questions não encontrado.`);
+    }
+}
+
+// Função para verificar a resposta e avançar para a próxima pergunta
+function checkAnswer(quizId, selectedAnswer) {
+    const questionIndex = currentQuestionIndex[quizId];
+    const currentQuestion = quizzes[quizId][questionIndex];
+
+    if (selectedAnswer === currentQuestion.correct) {
+        scores[quizId] += 1;
+    }
+
+    const scoreElement = document.getElementById(`score${quizId.slice(-1)}`);
+    if (scoreElement) scoreElement.textContent = `Pontuação: ${scores[quizId]}`;
+
+    currentQuestionIndex[quizId] += 1;
+    loadQuestion(quizId);
+}
+
+// Função para atualizar o ranking
+function updateRanking(quizId) {
+    const storedRanking = JSON.parse(localStorage.getItem(`ranking_${quizId}`)) || [];
+    storedRanking.push({ name: playerName, score: scores[quizId] });
+
+    // Ordena o ranking por pontuação, do maior para o menor
+    storedRanking.sort((a, b) => b.score - a.score);
+
+    // Armazena o ranking atualizado no Local Storage
+    localStorage.setItem(`ranking_${quizId}`, JSON.stringify(storedRanking));
+
+    // Exibe o ranking na tela
+    displayRanking(quizId, storedRanking);
+}
+
+// Função para exibir o ranking
+function displayRanking(quizId, ranking) {
+    const rankingElement = document.getElementById(`ranking${quizId.slice(-1)}`);
+    rankingElement.classList.remove('hidden');
+
+    let rankingHTML = "<h3>Ranking:</h3><ol>";
+    ranking.forEach((player, index) => {
+        rankingHTML += `<li>${index + 1}. ${player.name} - ${player.score} pontos</li>`;
+    });
+    rankingHTML += "</ol>";
+
+    rankingElement.innerHTML = rankingHTML;
+}
