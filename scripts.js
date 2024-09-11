@@ -50,25 +50,25 @@ function startQuiz(quizId) {
     currentQuestionIndex[quizId] = 0;
 
     // Esconde todos os quizzes
-    var quizzesDiv = document.querySelectorAll('.quiz');
+    const quizzesDiv = document.querySelectorAll('.quiz');
     quizzesDiv.forEach(quiz => {
         quiz.classList.remove('active');
-        // Verifica se os elementos existem antes de tentar modificar
-        let scoreElement = quiz.querySelector(`#score${quizId.slice(-1)}`);
+        
+        const scoreElement = quiz.querySelector(`#score${quizId.slice(-1)}`);
         if (scoreElement) scoreElement.textContent = 'Pontuação: 0';
 
-        let endElement = quiz.querySelector(`#quiz${quizId.slice(-1)}-end`);
+        const endElement = quiz.querySelector(`#quiz${quizId.slice(-1)}-end`);
         if (endElement) endElement.classList.add('hidden');
 
-        let rankingElement = quiz.querySelector(`#ranking${quizId.slice(-1)}`);
+        const rankingElement = quiz.querySelector(`#ranking${quizId.slice(-1)}`);
         if (rankingElement) rankingElement.classList.add('hidden');
 
-        let questionsElement = quiz.querySelector('.questions');
+        const questionsElement = quiz.querySelector(`#${quizId}-questions`);
         if (questionsElement) questionsElement.innerHTML = ''; // Limpa perguntas
     });
 
     // Mostra o quiz selecionado
-    var selectedQuiz = document.getElementById(quizId);
+    const selectedQuiz = document.getElementById(quizId);
     if (selectedQuiz) {
         selectedQuiz.classList.add('active');
         loadQuestion(quizId);  // Carrega a primeira pergunta
@@ -87,9 +87,9 @@ function loadQuestion(quizId) {
         const currentQuestion = quizData[questionIndex];
         quizElement.innerHTML = `
             <p>${currentQuestion.question}</p>
-            <button onclick="checkAnswer('${quizId}', 0)"> ${currentQuestion.answers[0]} </button>
-            <button onclick="checkAnswer('${quizId}', 1)"> ${currentQuestion.answers[1]} </button>
-            <button onclick="checkAnswer('${quizId}', 2)"> ${currentQuestion.answers[2]} </button>
+            <button onclick="checkAnswer('${quizId}', 0)">${currentQuestion.answers[0]}</button>
+            <button onclick="checkAnswer('${quizId}', 1)">${currentQuestion.answers[1]}</button>
+            <button onclick="checkAnswer('${quizId}', 2)">${currentQuestion.answers[2]}</button>
         `;
     } else if (quizElement) {
         quizElement.innerHTML = '';
@@ -99,13 +99,11 @@ function loadQuestion(quizId) {
         const finalScoreElement = document.getElementById(`finalScore${quizId.slice(-1)}`);
         if (finalScoreElement) finalScoreElement.textContent = scores[quizId];
 
-        // Adiciona a mensagem de parabéns se todas as respostas estiverem corretas
         if (scores[quizId] === quizzes[quizId].length) {
             const rankingElement = document.getElementById(`ranking${quizId.slice(-1)}`);
             if (rankingElement) {
                 rankingElement.innerHTML = `
                     <h3>Parabéns! Você acertou todas as perguntas! &#128513;</h3>
-                    ${rankingElement.innerHTML}  <!-- Mantém o conteúdo do ranking existente -->
                 `;
             }
         }
@@ -137,13 +135,10 @@ function updateRanking(quizId) {
     const storedRanking = JSON.parse(localStorage.getItem(`ranking_${quizId}`)) || [];
     storedRanking.push({ name: playerName, score: scores[quizId] });
 
-    // Ordena o ranking por pontuação, do maior para o menor
     storedRanking.sort((a, b) => b.score - a.score);
 
-    // Armazena o ranking atualizado no Local Storage
     localStorage.setItem(`ranking_${quizId}`, JSON.stringify(storedRanking));
 
-    // Exibe o ranking na tela
     displayRanking(quizId, storedRanking);
 }
 
@@ -160,3 +155,4 @@ function displayRanking(quizId, ranking) {
 
     rankingElement.innerHTML = rankingHTML;
 }
+console.log(document.getElementById(quizId));
