@@ -29,7 +29,12 @@ const quizzes = {
         { question: "Em que cidade Billie Eilish fez seu primeiro show no Brasil?", answers: ["São Paulo", "Rio de Janeiro", "Curitiba"], correct: 0 },
         { question: "Qual foi o primeiro grande festival americano que ela participou?", answers: ["Coachella", "Lollapalooza", "SXSW"], correct: 2 },
         { question: "Em que ano foi a turnê 'When We All Fall Asleep World Tour'?", answers: ["2019", "2020", "2018"], correct: 0 },
-        // Adicione mais perguntas conforme necessário até 10
+        { question: "Quando a Billie veio para o Brasil?", answers: ["2023", "2022", "2021"], correct: 0 },
+        { question: "Qual foi o Record batido por Billie no Lollapalooza?", answers: ["90.154 pessoas", "101.265 pessoas", "103.350 pessoas"], correct: 2 },
+        { question: "Quando começa a HIT ME HARD AND SOFT: TOUR?", answers: ["29 de Setembro", "30 de Setembro", "17 de Setemebro"], correct: 0 },
+        { question: "Onde começa a HIT ME HARD AND SOFT: TOUR?", answers: ["Toronto, Canada", "Detroit, Estados Unidos", "Quebec, Canada"], correct: 2 }, 
+        { question: "Quando termina a HIT ME HARD AND SOFT: TOUR?", answers: ["26 de Julho de 2025", "27 de Julho de 2025", "17 de Dezembro de 2024"], correct: 1 },
+        { question: "Qual desses faz parte do ato de abertura?", answers: ["Justin Bieber", "Chappell Roan", "Towa Bird"], correct: 2 },
     ]
 };
 
