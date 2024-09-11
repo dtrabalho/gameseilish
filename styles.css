@@ -110,3 +110,35 @@ button:hover, #quiz-buttons button:hover {
         font-size: 1em;
     }
 }
+/* Estilizar o ranking */
+#ranking1, #ranking2 {
+    text-align: center;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente para destacar o ranking */
+    color: #f5f5f5;
+    max-width: 90%;
+    font-size: 1.1em;
+}
+
+#ranking1 h3, #ranking2 h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#ranking1 ol, #ranking2 ol {
+    list-style: none;
+    padding: 0;
+}
+
+#ranking1 li, #ranking2 li {
+    background-color: #0E3D59; /* Cor de fundo das linhas do ranking */
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#ranking1 li:nth-child(odd), #ranking2 li:nth-child(odd) {
+    background-color: #123C73; /* Alternar cor de fundo para linhas ímpares */
+}
