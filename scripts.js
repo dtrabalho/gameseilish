@@ -95,6 +95,17 @@ function loadQuestion(quizId) {
         const finalScoreElement = document.getElementById(`finalScore${quizId.slice(-1)}`);
         if (finalScoreElement) finalScoreElement.textContent = scores[quizId];
 
+        // Adiciona a mensagem de parabéns se todas as respostas estiverem corretas
+        if (scores[quizId] === quizzes[quizId].length) {
+            const rankingElement = document.getElementById(`ranking${quizId.slice(-1)}`);
+            if (rankingElement) {
+                rankingElement.innerHTML = `
+                    <h3>Parabéns! Você acertou todas as perguntas! &#128513;</h3>
+                    ${rankingElement.innerHTML}  <!-- Mantém o conteúdo do ranking existente -->
+                `;
+            }
+        }
+
         updateRanking(quizId);
     } else {
         console.error(`Elemento ${quizId}-questions não encontrado.`);
