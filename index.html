@@ -11,11 +11,11 @@
             padding: 0;
             background: linear-gradient(to bottom, #123C73, #0E3D59, #060A0D);
             color: #f5f5f5;
-            min-height: 100vh; /* Garantir que o gradiente cubra a altura total da página */
+            min-height: 100vh;
         }
         h1 {
             text-align: center;
-            color: #BF0413; /* Cor vermelha para o título */
+            color: #BF0413;
             margin-top: 20px;
             margin-bottom: 20px;
             font-size: 2.5em;
@@ -44,13 +44,13 @@
             border: none;
             border-radius: 5px;
             color: #fff;
-            background-color: #BF0413; /* Cor vermelha para o botão */
+            background-color: #BF0413;
             font-size: 1em;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
         }
         button:hover {
-            background-color: #A00C11; /* Cor vermelha mais escura ao passar o mouse */
+            background-color: #A00C11;
             transform: scale(1.05);
         }
         button:active {
@@ -61,6 +61,7 @@
         }
         .quiz {
             display: none;
+            padding: 20px;
         }
         .quiz.active {
             display: block;
@@ -81,33 +82,60 @@
             transition: background-color 0.3s, transform 0.3s;
         }
         #quiz-buttons button:hover {
-            background-color: #0B2740; /* Cor de botão mais escura ao passar o mouse */
+            background-color: #0B2740;
             transform: scale(1.05);
         }
         #quiz-buttons button:active {
             transform: scale(1);
         }
+        .question-container {
+            margin-bottom: 20px;
+        }
+        .question-container p {
+            margin: 0;
+            font-size: 1.2em;
+            padding-bottom: 10px;
+        }
+        .question-container button {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+            padding: 15px;
+            font-size: 1em;
+            background-color: #0E3D59;
+            color: #fff;
+            text-align: left;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .question-container button:hover {
+            background-color: #0B2740;
+            transform: scale(1.05);
+        }
+        .question-container button:active {
+            transform: scale(1);
+        }
+        #back-to-menu {
+            display: none; /* Remover o botão de volta */
+        }
     </style>
 </head>
 <body>
-    <!-- Título da página -->
     <h1>Games Eilish</h1>
 
-    <!-- Container para inserir o nome do jogador -->
     <div id="name-container">
         <input type="text" id="playerName" placeholder="Digite seu nome" />
         <button onclick="setPlayerName()">Confirmar</button>
     </div>
 
-    <!-- Botões para iniciar os quizzes -->
     <div id="quiz-buttons" class="hidden">
         <button onclick="startQuiz('quiz1')">Iniciar Quiz 1</button>
         <button onclick="startQuiz('quiz2')">Iniciar Quiz 2</button>
     </div>
 
-    <!-- Quizzes -->
     <div id="quiz1" class="quiz">
-        <div id="quiz1-questions"></div>
+        <div id="quiz1-questions" class="question-container"></div>
         <div id="quiz1-end" class="hidden">
             <h3>Fim do Quiz 1</h3>
             <p>Você acertou <span id="finalScore1">0</span> perguntas.</p>
@@ -117,7 +145,7 @@
     </div>
 
     <div id="quiz2" class="quiz">
-        <div id="quiz2-questions"></div>
+        <div id="quiz2-questions" class="question-container"></div>
         <div id="quiz2-end" class="hidden">
             <h3>Fim do Quiz 2</h3>
             <p>Você acertou <span id="finalScore2">0</span> perguntas.</p>
