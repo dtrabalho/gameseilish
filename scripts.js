@@ -18,7 +18,11 @@ const quizzes = {
         { question: "Qual faixa abre o álbum 'When We All Fall Asleep, Where Do We Go?'", answers: ["Bad Guy", "You Should See Me in a Crown", "!!!!!!!"], correct: 2 },
         { question: "Qual é a última faixa de 'Happier Than Ever'?", answers: ["Happier Than Ever", "Male Fantasy", "Billie Bossa Nova"], correct: 1 },
         { question: "Onde BIRDS OF A FEATHER estava sendo produzido?", answers: ["Estados Unidos", "Argentina", "Brasil"], correct: 2 },
-        // Adicione mais perguntas conforme necessário até 10
+        { question: "Quando HIT ME HARD AND SOFT foi lançado?", answers: ["30 de Fevereiro", "17 de Maio", "17 de Fevereiro"], correct: 1 },
+        { question: "Qual é a sexta música do álbum?", answers: ["L'AMOUR DE MA VIE", "WILDFLOWER", "THE GREATEST"], correct: 2 },
+        { question: "Quem fez Billie dar o nome WHEN WE ALL FALL ASLEEP, WHERE DO WE GO?", answers: ["Finneas","Maggie","Patrick"], correct: 0 },
+        { question: "Qual dessas músicas falam sobre dependência química?", answers: ["Male Fantasy", "Bury a Friend", "Xanny"], correct: 2 },
+        { question: "Qual música de HIT ME HARD AND SOFT que tem a mesma estrutura que 'goodbye'?", answers: ["L'AMOUR DE MA VIE", "BLUE", "SKINNY"], correct: 1 }
     ],
     quiz2: [
         { question: "Em qual festival Billie Eilish se apresentou em 2022?", answers: ["Coachella", "Lollapalooza", "Glastonbury"], correct: 0 },
