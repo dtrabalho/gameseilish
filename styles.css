@@ -1,92 +1,112 @@
+/* Melhorar a responsividade */
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #123C73, #0E3D59, #060A0D);
+    color: #f5f5f5;
+    min-height: 100vh;
+    font-size: 16px; /* Tamanho de fonte base para desktop */
+    position: relative; /* Necessário para posicionamento absoluto */
 }
 
-.panel {
-    width: 80%;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    text-align: center;
+h1 {
+    font-size: 2em; /* Diminuir o tamanho em telas menores */
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-h1, h2 {
-    color: #333;
+#name-container, #quiz-buttons {
+    width: 90%; /* Ajustar largura para caber melhor em telas pequenas */
+    max-width: 350px;
+    margin: 10px auto; /* Centralizar com menos margem */
 }
 
-.button-container {
-    margin: 20px 0;
+#playerName {
+    padding: 10px;
+    width: 100%; /* Garantir que o input ocupe toda a largura */
+    margin-bottom: 10px; /* Espaçamento menor em mobile */
+    font-size: 1em; 
 }
 
 button {
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: #0B2740;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0E3D59;
-}
-
-.quiz-content {
-    margin-top: 20px;
+    width: 100%; /* Botões maiores para facilitar o toque */
+    padding: 12px;
+    font-size: 1.1em; /* Botões maiores */
+    margin-top: 10px; /* Espaçamento entre os botões */
+    margin-bottom: 10px; /* Espaçamento entre os botões */
 }
 
 .quiz {
-    display: none;
-    background-color: #0E3D59;
-    color: white;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 15px; /* Menos preenchimento em mobile */
+    font-size: 1em;
 }
 
-.quiz.active {
-    display: block;
-}
-
-.question {
-    margin: 20px 0;
+.quiz-content, .question {
+    font-size: 1.1em;
 }
 
 #score1, #score2 {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: #FFD700;
+    font-size: 1.2em; /* Manter o tamanho de fonte legível */
+    margin-top: 10px;
 }
 
-.hidden {
-    display: none;
+/* Pontuação no canto superior direito */
+#score1 {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5em;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente para destaque */
+    padding: 10px;
+    border-radius: 10px;
 }
 
-.restart-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #FFD700;
-    color: #0E3D59;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+/* Animação ao acertar uma questão */
+.correct-answer {
+    animation: correctAnimation 0.5s ease-in-out;
 }
 
-.restart-button:hover {
-    background-color: #FFC700;
-}
-.hidden {
-    display: none;
+/* Definir a animação de acerto */
+@keyframes correctAnimation {
+    0% {
+        background-color: #0E3D59;
+        transform: scale(1);
+    }
+    50% {
+        background-color: #28a745; /* Cor de acerto */
+        transform: scale(1.1); /* Efeito de "inchar" ao acertar */
+    }
+    100% {
+        background-color: #0E3D59;
+        transform: scale(1);
+    }
 }
 
-.ranking {
-    margin-top: 20px;
-    color: #FFD700;
-    font-size: 1.1em;
+/* Melhorar interatividade para mobile */
+button:hover, #quiz-buttons button:hover {
+    transform: none; /* Evitar efeitos de escala em mobile */
+}
+
+/* Adicionar media query para telas menores */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    #playerName, button {
+        font-size: 1em; /* Ajustar tamanho de fonte */
+    }
+
+    .quiz {
+        padding: 10px;
+    }
+
+    #score1, #score2 {
+        font-size: 1em; /* Reduzir para mais conforto em mobile */
+    }
+
+    .ranking {
+        font-size: 1em;
+    }
 }
