@@ -1,144 +1,131 @@
-/* Melhorar a responsividade */
+/* Estilos gerais da página */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: linear-gradient(to bottom, #123C73, #0E3D59, #060A0D);
     color: #f5f5f5;
-    min-height: 100vh;
-    font-size: 16px; /* Tamanho de fonte base para desktop */
-    position: relative; /* Necessário para posicionamento absoluto */
+    min-height: 100vh; /* Garantir que o gradiente cubra a altura total da página */
 }
 
 h1 {
-    font-size: 2em; /* Diminuir o tamanho em telas menores */
-    margin-top: 10px;
-    margin-bottom: 10px;
+    text-align: center;
+    color: #BF0413; /* Cor vermelha para o título */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    font-weight: bold;
 }
 
-#name-container, #quiz-buttons {
-    width: 90%; /* Ajustar largura para caber melhor em telas pequenas */
-    max-width: 350px;
-    margin: 10px auto; /* Centralizar com menos margem */
+/* Container para o nome do jogador */
+#name-container {
+    text-align: center;
+    margin-top: 20px;
 }
 
 #playerName {
     padding: 10px;
-    width: 100%; /* Garantir que o input ocupe toda a largura */
-    margin-bottom: 10px; /* Espaçamento menor em mobile */
-    font-size: 1em; 
-}
-
-button {
-    width: 100%; /* Botões maiores para facilitar o toque */
-    padding: 12px;
-    font-size: 1.1em; /* Botões maiores */
-    margin-top: 10px; /* Espaçamento entre os botões */
-    margin-bottom: 10px; /* Espaçamento entre os botões */
-}
-
-.quiz {
-    padding: 15px; /* Menos preenchimento em mobile */
-    font-size: 1em;
-}
-
-.quiz-content, .question {
-    font-size: 1.1em;
-}
-
-#score1, #score2 {
-    font-size: 1.2em; /* Manter o tamanho de fonte legível */
-    margin-top: 10px;
-}
-
-/* Pontuação no canto superior direito */
-#score1 {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 1.5em;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente para destaque */
-    padding: 10px;
-    border-radius: 10px;
-}
-
-/* Animação ao acertar uma questão */
-.correct-answer {
-    animation: correctAnimation 0.5s ease-in-out;
-}
-
-/* Definir a animação de acerto */
-@keyframes correctAnimation {
-    0% {
-        background-color: #0E3D59;
-        transform: scale(1);
-    }
-    50% {
-        background-color: #28a745; /* Cor de acerto */
-        transform: scale(1.1); /* Efeito de "inchar" ao acertar */
-    }
-    100% {
-        background-color: #0E3D59;
-        transform: scale(1);
-    }
-}
-
-/* Melhorar interatividade para mobile */
-button:hover, #quiz-buttons button:hover {
-    transform: none; /* Evitar efeitos de escala em mobile */
-}
-
-/* Adicionar media query para telas menores */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 1.8em;
-    }
-
-    #playerName, button {
-        font-size: 1em; /* Ajustar tamanho de fonte */
-    }
-
-    .quiz {
-        padding: 10px;
-    }
-
-    #score1, #score2 {
-        font-size: 1em; /* Reduzir para mais conforto em mobile */
-    }
-
-    .ranking {
-        font-size: 1em;
-    }
-}
-/* Estilizar o ranking */
-#ranking1, #ranking2 {
-    text-align: center;
-    margin: 20px auto;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente para destacar o ranking */
-    color: #f5f5f5;
-    max-width: 90%;
-    font-size: 1.1em;
-}
-
-#ranking1 h3, #ranking2 h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-#ranking1 ol, #ranking2 ol {
-    list-style: none;
-    padding: 0;
-}
-
-#ranking1 li, #ranking2 li {
-    background-color: #0E3D59; /* Cor de fundo das linhas do ranking */
-    margin: 5px 0;
-    padding: 10px;
+    border: 2px solid #0E3D59;
     border-radius: 5px;
+    font-size: 1em;
+    width: 80%;
+    max-width: 300px;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
-#ranking1 li:nth-child(odd), #ranking2 li:nth-child(odd) {
-    background-color: #123C73; /* Alternar cor de fundo para linhas ímpares */
+#playerName:focus {
+    border-color: #BF0413;
+}
+
+/* Botões gerais */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #BF0413; /* Cor vermelha para o botão */
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #A00C11; /* Cor vermelha mais escura ao passar o mouse */
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(1);
+}
+
+/* Botões do quiz */
+#quiz-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#quiz-buttons button {
+    margin: 5px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    background-color: #BF0413; /* Cor vermelha para os botões do quiz */
+    color: #fff;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#quiz-buttons button:hover {
+    background-color: #A00C11; /* Cor de botão mais escura ao passar o mouse */
+    transform: scale(1.05);
+}
+
+#quiz-buttons button:active {
+    transform: scale(1);
+}
+
+/* Estilos dos quizzes */
+.quiz {
+    display: none;
+}
+
+.quiz.active {
+    display: block;
+}
+
+/* Estilos para a contagem de pontuação */
+.score-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000; /* Certifique-se de que a pontuação esteja acima de outros elementos */
+    background-color: rgba(0, 0, 0, 0.5); /* Opcional: adicione um fundo semi-transparente para melhor visibilidade */
+    color: #fff; /* Cor do texto da pontuação */
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+}
+
+.score-container span {
+    display: block; /* Alinha a pontuação verticalmente */
+    margin-bottom: 5px; /* Espaçamento entre os itens de pontuação */
+}
+
+/* Estilos para o ranking */
+#ranking1, #ranking2 {
+    text-align: center; /* Centraliza o texto dentro do container */
+    margin-top: 20px; /* Adiciona espaço acima do ranking */
+    background-color: rgba(0, 0, 0, 0.5); /* Opcional: fundo semi-transparente */
+    padding: 15px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    display: inline-block; /* Faz com que o ranking se ajuste ao tamanho do conteúdo */
+    width: 100%; /* Faz o ranking ocupar a largura total disponível */
+    max-width: 400px; /* Define uma largura máxima para o ranking */
+}
+
+/* Estilos para elementos ocultos */
+.hidden {
+    display: none;
 }
