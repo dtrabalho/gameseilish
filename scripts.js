@@ -17,6 +17,7 @@ const quizzes = {
         { question: "Em que ano o álbum 'Happier Than Ever' foi lançado?", answers: ["2021", "2019", "2020"], correct: 0 },
         { question: "Qual faixa abre o álbum 'When We All Fall Asleep, Where Do We Go?'", answers: ["Bad Guy", "You Should See Me in a Crown", "!!!!!!!"], correct: 2 },
         { question: "Qual é a última faixa de 'Happier Than Ever'?", answers: ["Happier Than Ever", "Male Fantasy", "Billie Bossa Nova"], correct: 1 },
+        { question: "Onde BIRDS OF A FEATHER estava sendo produzido?", answers: ["Estados Unidos", "Argentina", "Brasil"], correct: 2 },
         // Adicione mais perguntas conforme necessário até 10
     ],
     quiz2: [
