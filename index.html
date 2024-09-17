@@ -15,7 +15,7 @@
         }
         h1 {
             text-align: center;
-            color: #BF0413;
+            color: #B50000;
             margin-top: 20px;
             margin-bottom: 20px;
             font-size: 2.5em;
@@ -44,7 +44,7 @@
             border: none;
             border-radius: 5px;
             color: #fff;
-            background-color: #BF0413;
+            background-color: #B50000;
             font-size: 1em;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
@@ -75,7 +75,7 @@
             padding: 15px 25px;
             border: none;
             border-radius: 5px;
-            background-color: #0E3D59;
+            background-color: #B50000;
             color: #fff;
             font-size: 1.1em;
             cursor: pointer;
@@ -110,14 +110,14 @@
             transition: background-color 0.3s, transform 0.3s;
         }
         .question-container button:hover {
-            background-color: #0B2740;
+            background-color: #B50000;
             transform: scale(1.05);
         }
         .question-container button:active {
             transform: scale(1);
         }
         #back-to-menu {
-            display: none; /* Remover o botão de volta */
+            display: none;
         }
     </style>
 </head>
@@ -130,8 +130,8 @@
     </div>
 
     <div id="quiz-buttons" class="hidden">
-        <button onclick="startQuiz('quiz1')">Quiz - Álbuns</button>
-        <button onclick="startQuiz('quiz2')">Quiz - Shows</button>
+        <button onclick="startQuiz('quiz1')">Iniciar Quiz 1</button>
+        <button onclick="startQuiz('quiz2')">Iniciar Quiz 2</button>
     </div>
 
     <div id="quiz1" class="quiz">
@@ -153,6 +153,10 @@
         </div>
         <p id="score2">Pontuação: 0</p>
     </div>
+<div id="congratulationsMessage" style="display: none; text-align: center;">
+    <img id="congratsImage" src="" alt="Parabéns" style="width: 200px;">
+    <h2>Parabéns! Você acertou todas as questões!</h2>
+</div>
 
     <script src="scripts.js"></script>
 </body>
