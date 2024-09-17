@@ -10,7 +10,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #BF0413; /* Cor vermelha para o título */
+    color: #B50000; /* Cor vermelha para o título */
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 2.5em;
@@ -45,14 +45,14 @@ button {
     border: none;
     border-radius: 5px;
     color: #fff;
-    background-color: #BF0413; /* Cor vermelha para o botão */
+    background-color: #B50000; 
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #A00C11; /* Cor vermelha mais escura ao passar o mouse */
+    background-color: #A00C11; 
     transform: scale(1.05);
 }
 
@@ -71,7 +71,7 @@ button:active {
     padding: 15px 25px;
     border: none;
     border-radius: 5px;
-    background-color: #BF0413; /* Cor vermelha para os botões do quiz */
+    background-color: #B50000;
     color: #fff;
     font-size: 1.1em;
     cursor: pointer;
@@ -79,7 +79,7 @@ button:active {
 }
 
 #quiz-buttons button:hover {
-    background-color: #A00C11; /* Cor de botão mais escura ao passar o mouse */
+    background-color: #A00C11;
     transform: scale(1.05);
 }
 
@@ -128,4 +128,20 @@ button:active {
 /* Estilos para elementos ocultos */
 .hidden {
     display: none;
+}
+#congratulationsMessage {
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #123C73; /* Cor azul do seu projeto */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#congratulationsMessage img {
+    margin-bottom: 20px;
+}
+
+#congratulationsMessage h2 {
+    color: #A62103; /* Cor vermelha dos botões */
+    font-size: 24px;
 }
