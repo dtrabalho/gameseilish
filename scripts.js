@@ -24,7 +24,7 @@ const quizzes = {
         { question: "Qual dessas músicas falam sobre dependência química?", answers: ["Male Fantasy", "Bury a Friend", "Xanny"], correct: 2 },
         { question: "Qual música de HIT ME HARD AND SOFT que tem a mesma estrutura que 'goodbye'?", answers: ["L'AMOUR DE MA VIE", "BLUE", "SKINNY"], correct: 1 }
     ],
-    quiz2: [
+      quiz2: [
         { question: "Em qual festival Billie Eilish se apresentou em 2022?", answers: ["Coachella", "Lollapalooza", "Glastonbury"], correct: 0 },
         { question: "Em que cidade Billie Eilish fez seu primeiro show no Brasil?", answers: ["São Paulo", "Rio de Janeiro", "Curitiba"], correct: 0 },
         { question: "Qual foi o primeiro grande festival americano que ela participou?", answers: ["Coachella", "Lollapalooza", "SXSW"], correct: 2 },
@@ -109,6 +109,7 @@ function loadQuestion(quizId) {
             if (rankingElement) {
                 rankingElement.innerHTML = `
                     <h3>Parabéns! Você acertou todas as perguntas! &#128513;</h3>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRypMrtaqe3K5_dhSE4m3GmS3nURDfujgV2FA&s" alt="Parabéns">
                 `;
             }
         }
@@ -160,4 +161,3 @@ function displayRanking(quizId, ranking) {
 
     rankingElement.innerHTML = rankingHTML;
 }
-console.log(document.getElementById(quizId));
